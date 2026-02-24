@@ -82,7 +82,7 @@ const TicketView = () => {
                 {isApproved && reg.qrCodeData && (() => {
                     const qrSrc = reg.qrCodeData.startsWith('data:')
                         ? reg.qrCodeData
-                        : `http://localhost:5000${reg.qrCodeData}`;
+                        : `${import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000'}${reg.qrCodeData}`;
                     const handleDownload = async () => {
                         try {
                             const response = await fetch(qrSrc);
@@ -117,7 +117,7 @@ const TicketView = () => {
                         {reg.paymentProof ? (
                             <div>
                                 <div style={{ fontSize: 13, color: 'var(--text-secondary)', marginBottom: 8 }}>Payment proof uploaded ✓</div>
-                                <img src={`http://localhost:5000${reg.paymentProof}`} alt="Payment proof" style={{ maxWidth: 200, borderRadius: 8, border: '1px solid var(--border)' }} />
+                                <img src={`${import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000'}${reg.paymentProof}`} alt="Payment proof" style={{ maxWidth: 200, borderRadius: 8, border: '1px solid var(--border)' }} />
                             </div>
                         ) : (
                             <label className="btn btn-outline" style={{ cursor: 'pointer' }}>

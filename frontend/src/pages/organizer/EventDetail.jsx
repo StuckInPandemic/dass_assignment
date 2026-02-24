@@ -211,27 +211,27 @@ const OrgEventDetail = () => {
                                     .slice()
                                     .sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
                                     .map((field, idx) => (
-                                    <div key={field.fieldId || idx} style={{
-                                        display: 'flex', alignItems: 'center', gap: 12,
-                                        padding: '10px 14px', borderRadius: 8,
-                                        background: 'var(--bg-secondary)',
-                                        border: '1px solid var(--border)',
-                                    }}>
-                                        <span style={{ fontSize: 12, color: 'var(--text-muted)', fontWeight: 600, minWidth: 20 }}>#{idx + 1}</span>
-                                        <div style={{ flex: 1 }}>
-                                            <div style={{ fontWeight: 600, fontSize: 14 }}>
-                                                {field.label}
-                                                {field.required && <span style={{ color: 'var(--error)', marginLeft: 4 }}>*</span>}
-                                            </div>
-                                            {field.options && field.options.length > 0 && (
-                                                <div style={{ fontSize: 12, color: 'var(--text-secondary)', marginTop: 2 }}>
-                                                    Options: {field.options.join(', ')}
+                                        <div key={field.fieldId || idx} style={{
+                                            display: 'flex', alignItems: 'center', gap: 12,
+                                            padding: '10px 14px', borderRadius: 8,
+                                            background: 'var(--bg-secondary)',
+                                            border: '1px solid var(--border)',
+                                        }}>
+                                            <span style={{ fontSize: 12, color: 'var(--text-muted)', fontWeight: 600, minWidth: 20 }}>#{idx + 1}</span>
+                                            <div style={{ flex: 1 }}>
+                                                <div style={{ fontWeight: 600, fontSize: 14 }}>
+                                                    {field.label}
+                                                    {field.required && <span style={{ color: 'var(--error)', marginLeft: 4 }}>*</span>}
                                                 </div>
-                                            )}
+                                                {field.options && field.options.length > 0 && (
+                                                    <div style={{ fontSize: 12, color: 'var(--text-secondary)', marginTop: 2 }}>
+                                                        Options: {field.options.join(', ')}
+                                                    </div>
+                                                )}
+                                            </div>
+                                            <span className="badge badge-gray" style={{ fontSize: 11, textTransform: 'uppercase' }}>{field.type}</span>
                                         </div>
-                                        <span className="badge badge-gray" style={{ fontSize: 11, textTransform: 'uppercase' }}>{field.type}</span>
-                                    </div>
-                                ))}
+                                    ))}
                             </div>
                             {event.customForm.isLocked && (
                                 <p style={{ fontSize: 12, color: 'var(--text-muted)', marginTop: 8 }}>🔒 Form is locked — fields cannot be modified</p>
@@ -372,7 +372,7 @@ const OrgEventDetail = () => {
                                     {/* Payment proof */}
                                     {order.paymentProof && (
                                         <div style={{ marginBottom: 8 }}>
-                                            <a href={`http://localhost:5000${order.paymentProof}`} target="_blank" rel="noopener noreferrer" style={{ fontSize: 13, color: 'var(--accent)' }}>
+                                            <a href={`${import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000'}${order.paymentProof}`} target="_blank" rel="noopener noreferrer" style={{ fontSize: 13, color: 'var(--accent)' }}>
                                                 📎 View Payment Proof
                                             </a>
                                         </div>

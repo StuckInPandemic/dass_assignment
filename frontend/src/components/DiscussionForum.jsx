@@ -9,7 +9,7 @@ import toast from 'react-hot-toast';
 
 dayjs.extend(relativeTime);
 
-const SOCKET_URL = 'http://localhost:5000';
+const SOCKET_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000';
 
 const DiscussionForum = ({ eventId }) => {
     const { user } = useAuth();
